@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="music-player">
+        <!-- Album Art -->
+        <div class="album-art">
+            <img id="albumImg" src="https://via.placeholder.com/300?text=Now+Playing" alt="Album Art">
+            <div class="playing-indicator">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <!-- Song Info -->
+        <div class="song-info">
+            <h2 id="songTitle">Song Title</h2>
+            <p id="artistName">Artist Name</p>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <span id="currentTime">0:00</span>
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+                <input 
+                    type="range" 
+                    id="progressRange" 
+                    min="0" 
+                    max="100" 
+                    value="0"
+                    class="progress-slider"
+                >
+            </div>
+            <span id="duration">0:00</span>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button id="prevBtn" class="control-btn" onclick="previousSong()">
+                <span>⏮</span>
+            </button>
+            <button id="playBtn" class="control-btn play-btn" onclick="togglePlay()">
+                <span id="playIcon">▶</span>
+            </button>
+            <button id="nextBtn" class="control-btn" onclick="nextSong()">
+                <span>⏭</span>
+            </button>
+        </div>
+
+        <!-- Volume Control -->
+        <div class="volume-container">
+            <span class="volume-icon">🔊</span>
+            <input 
+                type="range" 
+                id="volumeSlider" 
+                min="0" 
+                max="100" 
+                value="70"
+                class="volume-slider"
+            >
+            <span id="volumeValue">70%</span>
+        </div>
+
+        <!-- Playlist Toggle -->
+        <button id="playlistToggle" class="playlist-btn" onclick="togglePlaylist()">
+            📋 Playlist
+        </button>
+
+        <!-- Playlist -->
+        <div id="playlistContainer" class="playlist-container">
+            <div class="playlist-header">
+                <h3>Playlist</h3>
+                <button class="close-btn" onclick="togglePlaylist()">✕</button>
+            </div>
+            <ul id="playlistItems" class="playlist-items"></ul>
+        </div>
+
+        <!-- Additional Features -->
+        <div class="features">
+            <button id="repeatBtn" class="feature-btn" onclick="toggleRepeat()" title="Repeat">
+                🔁 <span id="repeatStatus">All</span>
+            </button>
+            <button id="shuffleBtn" class="feature-btn" onclick="toggleShuffle()" title="Shuffle">
+                🔀 <span id="shuffleStatus">Off</span>
+            </button>
+            <button id="autoplayBtn" class="feature-btn" onclick="toggleAutoplay()" title="Autoplay">
+                ▶️ <span id="autoplayStatus">On</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="audioPlayer"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
